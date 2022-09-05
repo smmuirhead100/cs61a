@@ -1,6 +1,6 @@
 """The Game of Hog."""
 
-from dice import six_sided, make_test_dice
+from dice import make_fair_dice, six_sided, make_test_dice
 from ucb import main, trace, interact
 from math import log2
 
@@ -22,7 +22,23 @@ def roll_dice(num_rolls, dice=six_sided):
     assert type(num_rolls) == int, 'num_rolls must be an integer.'
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
-    "*** YOUR CODE HERE ***"
+
+    roll = 0
+    total = 0
+    got_one = False
+    while roll < num_rolls:
+        curr = dice()
+        total = total + curr
+        roll = roll + 1 
+        if curr == 1:
+            got_one = True
+    if got_one == True: 
+        return 1
+    else:
+        return total
+    
+
+        
     # END PROBLEM 1
 
 
