@@ -33,6 +33,7 @@ def tail_points(opponent_score):
 
     """
     # BEGIN PROBLEM 2
+    penis
     "*** YOUR CODE HERE ***"
     # END PROBLEM 2
 
