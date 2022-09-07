@@ -1,5 +1,6 @@
 """The Game of Hog."""
 
+from re import X
 from dice import make_fair_dice, six_sided, make_test_dice
 from ucb import main, trace, interact
 from math import log2
@@ -98,7 +99,27 @@ def square_update(num_rolls, player_score, opponent_score, dice=six_sided):
 
 
 # BEGIN PROBLEM 4
-"*** YOUR CODE HERE ***"
+
+def perfect_square(score): 
+    curr_square = 0
+    while curr_square < (score):
+        curr_square += 1
+        if curr_square * curr_square == score:
+            return True 
+    else: 
+        return False 
+
+def next_perfect_square(score):  
+    curr_square = 0
+    while curr_square < (score):
+        curr_square += 1
+        if curr_square * curr_square == score:
+            return (curr_square + 1) * (curr_square+1)
+
+
+    
+
+    
 # END PROBLEM 4
 
 
@@ -137,7 +158,12 @@ def play(strategy0, strategy1, update,
     """
     who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
-    "*** YOUR CODE HERE ***"
+    while score0 < goal and score1 < goal: 
+       score0 += take_turn(strategy0, score1, dice)
+       score1 += take_turn(strategy1, score0, dice)
+       if update == True:
+           print (score0, score1)
+    
     # END PROBLEM 5
     return score0, score1
 
