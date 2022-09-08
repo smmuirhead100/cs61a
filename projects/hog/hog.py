@@ -1,5 +1,6 @@
 """The Game of Hog."""
 
+import numbers
 from re import X
 from dice import make_fair_dice, six_sided, make_test_dice
 from ucb import main, trace, interact
@@ -193,7 +194,10 @@ def always_roll(n):
     """
     assert n >= 0 and n <= 10
     # BEGIN PROBLEM 6
-    "*** YOUR CODE HERE ***"
+    def strategy(player_score, opponent_score): 
+        roll_dice = n 
+        return roll_dice
+    return strategy
     # END PROBLEM 6
 
 
@@ -223,7 +227,26 @@ def is_always_roll(strategy, goal=GOAL):
     False
     """
     # BEGIN PROBLEM 7
-    "*** YOUR CODE HERE ***"
+
+    round = 0
+    score = 0
+    opponent_score = 0
+    while score <= goal:
+        rolls = strategy(score, opponent_score)
+        if round == 0: 
+            x = True
+        elif rolls != strategy(score, opponent_score-1):
+            x = False
+        opponent_score += 1
+        if opponent_score == 101:
+            score += 1
+            opponent_score = 0
+        round += 1
+            
+    return x
+   
+
+    
     # END PROBLEM 7
 
 
@@ -239,7 +262,17 @@ def make_averaged(original_function, total_samples=1000):
     3.0
     """
     # BEGIN PROBLEM 8
-    "*** YOUR CODE HERE ***"
+    
+    def averaged_dice(*args): 
+        total = 0 
+        count = 1
+        while count <= total_samples:
+            total = total + original_function(*args)
+            count += 1
+        return total / total_samples
+ 
+    return averaged_dice
+
     # END PROBLEM 8
 
 
